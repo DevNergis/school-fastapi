@@ -1,8 +1,10 @@
-FROM python
+FROM python:alpine
 
 COPY . .
 
-RUN pip install -r requirements.txt
+RUN pip install poetry
+
+RUN poetry install
 
 EXPOSE 8000
-CMD fastapi run
+CMD poetry run fastapi run
